@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +26,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 15px;
-            font-size: 18px; /* Tamaño legible para adultos mayores */
+            font-size: 18px; /* Lectura clara para adultos mayores */
             line-height: 1.6;
         }
 
@@ -74,7 +73,7 @@
             border-radius: 4px;
         }
 
-        /* Responsive Table Container */
+        /* Tabla responsiva para móviles */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -85,7 +84,7 @@
         .grammar-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px; /* Asegura lectura clara en celulares */
+            min-width: 600px;
             font-size: 16px;
         }
 
@@ -192,7 +191,7 @@
             font-size: 1rem;
         }
 
-        /* MEDIA QUERIES PARA ADAPTABILIDAD RESPONSIVA */
+        /* Ajustes para celulares */
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -234,7 +233,7 @@
         <div class="explanation-box">
             <h3>¿Qué vas a dominar en esta lección?</h3>
             <ul>
-                <li><strong>Adjetivos Posesivos:</strong> Términos que van acompañando al objeto (ej. <em>mi</em> casa, <em>su</em> perro).</li>
+                <li><strong>Adjetivos Posesivos:</strong> Términos que acompañan al objeto (ej. <em>mi</em> casa, <em>su</em> perro).</li>
                 <li><strong>Pronombres Posesivos:</strong> Palabras que reemplazan al objeto (ej. La casa es <em>mía</em>, el perro es <em>suyo</em>).</li>
                 <li><strong>Genitivo Sajón ('s / '):</strong> Expresa posesión con nombres de personas y grupos (ej. La casa <em>de los abuelos</em>).</li>
             </ul>
@@ -319,8 +318,8 @@
             <h4>A. Un solo dueño (Sustantivo Singular):</h4>
             <p>Agregamos un apóstrofe y una S: <strong>'s</strong></p>
             <ul>
-                <li><strong>Pedro's house</strong> &rarr; La casa de Pedro</li>
-                <li><strong>My mother's kitchen</strong> &rarr; La cocina de mi madre</li>
+                <li><strong>Pedro's house</strong> significa: La casa de Pedro</li>
+                <li><strong>My mother's kitchen</strong> significa: La cocina de mi madre</li>
             </ul>
         </div>
 
@@ -328,9 +327,9 @@
             <h4>B. Varios dueños - Plurales Regulares (Terminados en "S"):</h4>
             <p>Si la palabra YA termina en <strong>S</strong> por ser un plural regular, <strong>SOLO agregas el apóstrofe (')</strong> al final. ¡No agregues otra S!</p>
             <ul>
-                <li><strong>My parents' house</strong> &rarr; La casa de mis padres.</li>
-                <li><strong>The students' classroom</strong> &rarr; El salón de los estudiantes.</li>
-                <li><strong>The dogs' park</strong> &rarr; El parque de los perros.</li>
+                <li><strong>My parents' house</strong> significa: La casa de mis padres.</li>
+                <li><strong>The students' classroom</strong> significa: El salón de los estudiantes.</li>
+                <li><strong>The dogs' park</strong> significa: El parque de los perros.</li>
             </ul>
         </div>
 
@@ -338,8 +337,8 @@
             <h4>C. Varios dueños - Plurales Irregulares (NO terminan en "S"):</h4>
             <p>Si el plural no termina en S, se aplica la regla estándar: agregas <strong>'s</strong>.</p>
             <ul>
-                <li><strong>The children's toys</strong> &rarr; Los juguetes de los niños.</li>
-                <li><strong>The women's group</strong> &rarr; El grupo de las mujeres.</li>
+                <li><strong>The children's toys</strong> significa: Los juguetes de los niños.</li>
+                <li><strong>The women's group</strong> significa: El grupo de las mujeres.</li>
             </ul>
         </div>
 
@@ -347,7 +346,7 @@
             <h4>D. Dos o más dueños nombrados juntos:</h4>
             <p>Si un mismo objeto pertenece a dos personas nombradas juntas, la <strong>'s</strong> va ÚNICAMENTE en el último nombre.</p>
             <ul>
-                <li><strong>Ana and Carlos's bakery</strong> &rarr; La panadería de Ana y Carlos.</li>
+                <li><strong>Ana and Carlos's bakery</strong> significa: La panadería de Ana y Carlos.</li>
             </ul>
         </div>
 
@@ -536,7 +535,7 @@
     function showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(screenId).classList.add('active');
-        window.scrollTo(0, 0); // Regresa al inicio al cambiar de pantalla
+        window.scrollTo(0, 0);
     }
 
     function startGame() {
@@ -622,3 +621,4 @@
 
 </body>
 </html>
+
