@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Game - Ownership</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --primary: #2b580c;
+            --secondary: #639a67;
+            --accent: #d8ebb5;
+            --text-main: #333333;
+            --correct: #2e7d32;
+            --incorrect: #c62828;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .game-container {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .guide-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--secondary);
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sentence-en {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .sentence-es {
+            font-size: 1.1rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 480px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .btn-option {
+            background-color: #f0f4f1;
+            border: 2px solid #d0dcd0;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .btn-option:hover {
+            background-color: var(--accent);
+            border-color: var(--secondary);
+        }
+
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 1.05rem;
+            line-height: 1.4;
+        }
+
+        .feedback.correct {
+            background-color: #e8f5e9;
+            color: var(--correct);
+            border: 1px solid #a5d6a7;
+        }
+
+        .feedback.incorrect {
+            background-color: #ffebee;
+            color: var(--incorrect);
+            border: 1px solid #ef9a9a;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score-board {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .btn-next {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        .btn-next:hover {
+            background-color: #1e3d08;
+        }
+
+        .rule-badge {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <header>
+        <h1>English Grammar Challenge</h1>
+        <p class="subtitle">Aprende Posesivos y Genitivo Sajón fácilmente</p>
+    </header>
+
+    <div class="guide-box">
+        <strong>💡 Guía rápida:</strong><br>
+        1. <strong>Possessive Adjective:</strong> Va ACOMPAÑANDO al objeto (ej: <em><strong>My</strong> house</em>).<br>
+        2. <strong>Possessive Pronoun:</strong> Va SOLO, reemplaza al objeto (ej: <em>The house is <strong>mine</strong></em>).<br>
+        3. <strong>Saxon Genitivo ('s):</strong> Muestra al DUEÑO del objeto (ej: <em><strong>Mary's</strong> car</em>).
+    </div>
+
+    <main id="quiz-body">
+        <div class="card">
+            <span class="rule-badge" id="rule-type">Tipo de Regla</span>
+            <div class="sentence-en" id="sentence-en">Loading...</div>
+            <div class="sentence-es" id="sentence-es">Cargando...</div>
+        </div>
+
+        <div class="options-grid" id="options-container">
+            <!-- Buttons dynamically inserted here -->
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="controls">
+            <div class="score-board">Puntos: <span id="score">0</span> / <span id="total">0</span></div>
+            <button class="btn-next" id="btn-next" onclick="nextQuestion()">Siguiente Pregunta ➔</button>
+        </div>
+    </main>
+</div>
+
+<script>
+    const questions = [
+        {
+            type: "Possessive Adjective (Adjetivo Posesivo)",
+            sentenceEn: "This is _____ house.",
+            sentenceEs: "Esta es mi casa.",
+            options: ["my", "mine", "me", "I"],
+            correct: 0,
+            explanationEn: "Use 'my' because it comes before the noun 'house'.",
+            explanationEs: "Usa 'my' porque va directamente antes del sustantivo 'house' (mi casa)."
+        },
+        {
+            type: "Possessive Pronoun (Pronombre Posesivo)",
+            sentenceEn: "This house is _____.",
+            sentenceEs: "Esta casa es mía.",
+            options: ["my", "mine", "me", "myself"],
+            correct: 1,
+            explanationEn: "Use 'mine' because it stands alone at the end of the sentence.",
+            explanationEs: "Usa 'mine' porque va solo al final de la frase y reemplaza a 'mi casa'."
+        },
+        {
+            type: "Saxon Genitive (Genitivo Sajón)",
+            sentenceEn: "This is _____ dog.",
+            sentenceEs: "Este es el perro de Ana.",
+            options: ["Ana", "of Ana", "Ana's", "Anas"],
+            correct: 2,
+            explanationEn: "Use 'Ana's' to show ownership. Add 's to the person.",
+            explanationEs: "Usa 'Ana's' para indicar posesión. Se le agrega 's a la persona dueña del objeto."
+        },
+        {
+            type: "Possessive Adjective (Adjetivo Posesivo)",
+            sentenceEn: "Where is _____ jacket?",
+            sentenceEs: "¿Dónde está tu chaqueta?",
+            options: ["yours", "your", "you", "she"],
+            correct: 1,
+            explanationEn: "Use 'your' because it accompanies the word 'jacket'.",
+            explanationEs: "Usa 'your' porque acompaña directamente a la palabra 'jacket' (tu chaqueta)."
+        },
+        {
+            type: "Possessive Pronoun (Pronombre Posesivo)",
+            sentenceEn: "The blue car is _____.",
+            sentenceEs: "El carro azul es de él (suyo).",
+            options: ["his", "he", "him", "his's"],
+            correct: 0,
+            explanationEn: "Use 'his' as a pronoun to mean 'his car'.",
+            explanationEs: "Usa 'his' como pronombre para indicar que el vehículo le pertenece a él."
+        },
+        {
+            type: "Saxon Genitive (Genitivo Sajón)",
+            sentenceEn: "Where is the _____ room?",
+            sentenceEs: "¿Dónde está el cuarto del bebé?",
+            options: ["baby", "baby's", "babys", "of baby"],
+            correct: 1,
+            explanationEn: "Add 's to 'baby' to show that the room belongs to the baby.",
+            explanationEs: "Añade 's a 'baby' (baby's) para demostrar que la habitación pertenece al bebé."
+        },
+        {
+            type: "Possessive Pronoun (Pronombre Posesivo)",
+            sentenceEn: "Is this coffee _____?",
+            sentenceEs: "¿Este café es tuyo?",
+            options: ["your", "you", "yours", "yours's"],
+            correct: 2,
+            explanationEn: "Use 'yours' because there is no noun after the blank space.",
+            explanationEs: "Usa 'yours' porque no hay ningún sustantivo después del espacio en blanco."
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+        answered = false;
+        const q = questions[currentQuestionIndex];
+        
+        document.getElementById("rule-type").innerText = q.type;
+        document.getElementById("sentence-en").innerText = q.sentenceEn;
+        document.getElementById("sentence-es").innerText = q.sentenceEs;
+        
+        const optionsContainer = document.getElementById("options-container");
+        optionsContainer.innerHTML = "";
+
+        q.options.forEach((opt, index) => {
+            const btn = document.createElement("button");
+            btn.className = "btn-option";
+            btn.innerText = opt;
+            btn.onclick = () => selectOption(index);
+            optionsContainer.appendChild(btn);
+        });
+
+        document.getElementById("feedback").style.display = "none";
+        document.getElementById("btn-next").style.display = "none";
+        document.getElementById("total").innerText = questions.length;
+    }
+
+    function selectOption(index) {
+        if (answered) return;
+        answered = true;
+
+        const q = questions[currentQuestionIndex];
+        const feedbackEl = document.getElementById("feedback");
+        const buttons = document.querySelectorAll(".btn-option");
+
+        if (index === q.correct) {
+            score++;
+            document.getElementById("score").innerText = score;
+            feedbackEl.className = "feedback correct";
+            feedbackEl.innerHTML = `<strong>¡Correcto! / Correct!</strong><br>${q.explanationEn}<br><em>${q.explanationEs}</em>`;
+            buttons[index].style.backgroundColor = "#c8e6c9";
+            buttons[index].style.borderColor = "#2e7d32";
+        } else {
+            feedbackEl.className = "feedback incorrect";
+            feedbackEl.innerHTML = `<strong>Incorrecto / Incorrect</strong><br>La respuesta correcta es: <strong>${q.options[q.correct]}</strong>.<br>${q.explanationEn}<br><em>${q.explanationEs}</em>`;
+            buttons[index].style.backgroundColor = "#ffcdd2";
+            buttons[index].style.borderColor = "#c62828";
+            buttons[q.correct].style.backgroundColor = "#c8e6c9";
+        }
+
+        feedbackEl.style.display = "block";
+        document.getElementById("btn-next").style.display = "block";
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion();
+        } else {
+            showFinalResults();
+        }
+    }
+
+    function showFinalResults() {
+        const quizBody = document.getElementById("quiz-body");
+        quizBody.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <h2>¡Juego Terminado! / Game Over!</h2>
+                <p style="font-size: 1.3rem;">Tu puntuación final es: <strong>${score} de ${questions.length}</strong></p>
+                <p>${score === questions.length ? '¡Excelente trabajo! Dominas el tema a la perfección.' : '¡Buen esfuerzo! Puedes intentar de nuevo para mejorar.'}</p>
+                <button class="btn-next" style="display: inline-block; margin-top: 15px;" onclick="location.reload()">Jugar de Nuevo / Restart</button>
+            </div>
+        `;
+    }
+
+    // Initialize game
+    loadQuestion();
+</script>
+
+</body>
+</html>
