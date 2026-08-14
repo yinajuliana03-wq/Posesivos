@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Posesivos en Inglés</title>
+    <title>Dominando los Posesivos en Inglés</title>
     <style>
         :root {
             --primary-color: #1a365d;
@@ -22,7 +23,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            font-size: 18px; /* Lectura clara para adultos mayores */
+            font-size: 18px; /* Tamaño de letra accesible para adultos mayores */
             line-height: 1.6;
         }
 
@@ -76,10 +77,10 @@
 
         .rule-card {
             background-color: #f7fafc;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
+            border: 2px solid #e2e8f0;
+            padding: 18px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -158,108 +159,128 @@
 
     <!-- PANTALLA 1: INICIO -->
     <div id="start-screen" class="screen active">
-        <h1>Dominando los Posesivos en Inglés</h1>
-        <p>Aprende a expresar posesión de forma definitiva. Conoce la diferencia exacta entre adjetivos posesivos, pronombres posesivos y el genitivo sajón con explicaciones sencillas y ejemplos cotidianos.</p>
+        <h1>Curso Interactivo: Los Posesivos en Inglés</h1>
+        <p>Bienvenido/a. Aquí aprenderás a usar correctamente los <strong>Adjetivos Posesivos</strong>, los <strong>Pronombres Posesivos</strong> y el <strong>Genitivo Sajón</strong> con explicaciones claras, tablas detalladas y ejemplos sencillos de la vida diaria.</p>
         
         <div class="explanation-box">
-            <h3>¿Qué vas a aprender?</h3>
-            <p>1. <strong>Adjetivos Posesivos:</strong> Acompañan siempre al objeto (ej. <em>Mi</em> casa).</p>
-            <p>2. <strong>Pronombres Posesivos:</strong> Reemplazan al objeto (ej. La casa es <em>mía</em>).</p>
-            <p>3. <strong>Genitivo Sajón ('s):</strong> Indica que algo le pertenece a alguien específico (ej. La casa <em>de Carlos</em>).</p>
+            <h3>¿Qué vas a dominar en esta lección?</h3>
+            <ul>
+                <li><strong>Adjetivos Posesivos:</strong> Todos los términos que acompañan al objeto (ej. <em>mi</em> casa, <em>su</em> perro).</li>
+                <li><strong>Pronombres Posesivos:</strong> Las palabras que reemplazan al objeto (ej. La casa es <em>mía</em>, el perro es <em>suyo</em>).</li>
+                <li><strong>Genitivo Sajón ('s / '):</strong> Cómo expresar posesión con nombres de personas y plurales (ej. La casa <em>de los abuelos</em>).</li>
+            </ul>
         </div>
 
-        <button class="btn" onclick="showScreen('guide-screen')">Leer Explicación Completa</button>
+        <button class="btn" onclick="showScreen('guide-screen')">Estudiar la Guía Teórica</button>
         <button class="btn" style="background-color: var(--accent-color);" onclick="startGame()">Ir Directo al Juego (20 Ejercicios)</button>
     </div>
 
     <!-- PANTALLA 2: GUÍA TEÓRICA COMPLETA -->
     <div id="guide-screen" class="screen">
-        <h2>Guía Completa de Posesivos</h2>
+        <h2>Guía Teórica Completa</h2>
 
-        <!-- TABLA COMPARATIVA -->
-        <h3>1. Todos los Adjetivos y Pronombres Posesivos</h3>
-        <p>Observa la lista completa según la persona de quien se habla:</p>
+        <!-- SECCIÓN 1: ADJETIVOS Y PRONOMBRES -->
+        <div class="explanation-box">
+            <h3>1. Adjetivos Posesivos vs. Pronombres Posesivos</h3>
+            <p><strong>Diferencia clave:</strong> El <em>adjetivo</em> NUNCA va solo (necesita nombrar el objeto después). El <em>pronombre</em> va SOLO (reemplaza al objeto para no repetirlo).</p>
+        </div>
 
         <table class="grammar-table">
             <thead>
                 <tr>
-                    <th>Persona</th>
+                    <th>Persona (Español)</th>
                     <th>Adjetivo Posesivo<br><small>(Va ANTES del objeto)</small></th>
-                    <th>Pronombre Posesivo<br><small>(Va SOLO, al final)</small></th>
-                    <th>Ejemplo cotidiano y traducción</th>
+                    <th>Pronombre Posesivo<br><small>(Va SOLO / Al final)</small></th>
+                    <th>Ejemplo Comparativo con Traducción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>I</strong> (Yo)</td>
-                    <td><strong>My</strong> (Mi/Mis)</td>
-                    <td><strong>Mine</strong> (Mío/Mía/Míos/Mías)</td>
-                    <td>This is <strong>my</strong> key. / The key is <strong>mine</strong>.<br><em>Esta es mi llave. / La llave es mía.</em></td>
+                    <td><strong>Yo</strong> (I)</td>
+                    <td><strong>My</strong> (Mi / Mis)</td>
+                    <td><strong>Mine</strong> (Mío / Mía / Míos / Mías)</td>
+                    <td>This is <strong>my</strong> car. / This car is <strong>mine</strong>.<br><em>Este es mi carro. / Este carro es mío.</em></td>
                 </tr>
                 <tr>
-                    <td><strong>You</strong> (Tú/Usted)</td>
-                    <td><strong>Your</strong> (Tu/Su)</td>
-                    <td><strong>Yours</strong> (Tuyo/Suyo)</td>
-                    <td>Is this <strong>your</strong> coffee? / Is this coffee <strong>yours</strong>?<br><em>¿Este es tu café? / ¿Este café es tuyo?</em></td>
+                    <td><strong>Tú / Usted</strong> (You)</td>
+                    <td><strong>Your</strong> (Tu / Su)</td>
+                    <td><strong>Yours</strong> (Tuyo / Suyo)</td>
+                    <td>Is this <strong>your</strong> hat? / Is this hat <strong>yours</strong>?<br><em>¿Este es tu sombrero? / ¿Este sombrero es tuyo?</em></td>
                 </tr>
                 <tr>
-                    <td><strong>He</strong> (Él)</td>
-                    <td><strong>His</strong> (Su de él)</td>
-                    <td><strong>His</strong> (Suyo de él)</td>
-                    <td>That is <strong>his</strong> car. / That car is <strong>his</strong>.<br><em>Ese es su carro. / Ese carro es suyo (de él).</em></td>
+                    <td><strong>Él</strong> (He)</td>
+                    <td><strong>His</strong> (Su - de él)</td>
+                    <td><strong>His</strong> (Suyo - de él)</td>
+                    <td>That is <strong>his</strong> phone. / That phone is <strong>his</strong>.<br><em>Ese es su teléfono. / Ese teléfono es suyo.</em></td>
                 </tr>
                 <tr>
-                    <td><strong>She</strong> (Ella)</td>
-                    <td><strong>Her</strong> (Su de ella)</td>
-                    <td><strong>Hers</strong> (Suya de ella)</td>
-                    <td>This is <strong>her</strong> purse. / The purse is <strong>hers</strong>.<br><em>Esta es su cartera. / La cartera es de ella.</em></td>
+                    <td><strong>Ella</strong> (She)</td>
+                    <td><strong>Her</strong> (Su - de ella)</td>
+                    <td><strong>Hers</strong> (Suya - de ella)</td>
+                    <td>It is <strong>her</strong> bag. / The bag is <strong>hers</strong>.<br><em>Es su bolso. / El bolso es de ella.</em></td>
                 </tr>
                 <tr>
-                    <td><strong>It</strong> (Cosa/Animal)</td>
-                    <td><strong>Its</strong> (Su de eso)</td>
+                    <td><strong>Objeto / Animal</strong> (It)</td>
+                    <td><strong>Its</strong> (Su - de eso)</td>
                     <td><em>(No se usa)</em></td>
-                    <td>The cat eats <strong>its</strong> food.<br><em>El gato come su comida.</em></td>
+                    <td>The dog eats <strong>its</strong> food.<br><em>El perro come su comida.</em></td>
                 </tr>
                 <tr>
-                    <td><strong>We</strong> (Nosotros)</td>
-                    <td><strong>Our</strong> (Nuestro)</td>
-                    <td><strong>Ours</strong> (NUESTRO / De nosotros)</td>
+                    <td><strong>Nosotros</strong> (We)</td>
+                    <td><strong>Our</strong> (Nuestro / Nuestra)</td>
+                    <td><strong>Ours</strong> (Nuestro / De nosotros)</td>
                     <td>This is <strong>our</strong> house. / The house is <strong>ours</strong>.<br><em>Esta es nuestra casa. / La casa es nuestra.</em></td>
                 </tr>
                 <tr>
-                    <td><strong>They</strong> (Ellos/Ellas)</td>
-                    <td><strong>Their</strong> (Su de ellos)</td>
-                    <td><strong>Theirs</strong> (Suyo de ellos)</td>
-                    <td>It is <strong>their</strong> dog. / The dog is <strong>theirs</strong>.<br><em>Es su perro. / El perro es de ellos.</em></td>
+                    <td><strong>Ellos / Ellas</strong> (They)</td>
+                    <td><strong>Their</strong> (Su / Sus - de ellos)</td>
+                    <td><strong>Theirs</strong> (Suyo / De ellos)</td>
+                    <td>It is <strong>their</strong> garden. / The garden is <strong>theirs</strong>.<br><em>Es su jardín. / El jardín es de ellos.</em></td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- GENITIVO SAJÓN EXPLICADO -->
-        <h3>2. El Genitivo Sajón ('s)</h3>
-        <p>En español decimos <em>"El libro de Ana"</em>. En inglés no se usa la palabra "de" (<em>of</em>) para personas. En su lugar, invertimos el orden y agregamos un apóstrofe con 's.</p>
+        <!-- SECCIÓN 2: GENITIVO SAJÓN COMPLETO -->
+        <h3 style="margin-top: 40px;">2. El Genitivo Sajón ('s / ') - Regla de Posesión de Personas</h3>
+        <p>En inglés NO se usa "de" (<em>of</em>) para personas. Se coloca primero al dueño y luego el objeto.</p>
 
         <div class="rule-card">
-            <h4>Fórmula Básica:</h4>
-            <p style="text-align: center; font-size: 22px;"><strong>Poseedor + 's + Objeto poseído</strong></p>
+            <h4>A. Un solo dueño (Sustantivo Singular):</h4>
+            <p>Agregamos un apóstrofe y una S: <strong>'s</strong></p>
             <ul>
-                <li><strong>Ana's book</strong> $\rightarrow$ El libro de Ana</li>
-                <li><strong>Pedro's hat</strong> $\rightarrow$ El sombrero de Pedro</li>
+                <li><strong>Pedro's house</strong> $\rightarrow$ La casa de Pedro</li>
                 <li><strong>My mother's kitchen</strong> $\rightarrow$ La cocina de mi madre</li>
             </ul>
         </div>
 
         <div class="rule-card">
-            <h4>Reglas Especiales del Genitivo Sajón:</h4>
+            <h4>B. Varios dueños - Plurales Regulares (Terminados en "S"):</h4>
+            <p>Si la palabra YA termina en <strong>S</strong> por ser un plural regular, <strong>SOLO agregas el apóstrofe (')</strong> al final. ¡No pongas otra S!</p>
             <ul>
-                <li><strong>Si el nombre termina en S (o es plural regular):</strong> Solo agregas el apóstrofe al final <strong>(')</strong>.<br>
-                Ejemplo: <em>The dogs' house</em> (La casa de los perros) / <em>Carlos' car</em> (El carro de Carlos).</li>
-                <li><strong>Si hay dos dueños juntos:</strong> Solo le pones <strong>'s</strong> al último nombre.<br>
-                Ejemplo: <em>Maria and Juan's bakery</em> (La panadería de María y Juan).</li>
+                <li><strong>My parents' house</strong> $\rightarrow$ La casa de mis padres (varios padres).</li>
+                <li><strong>The students' classroom</strong> $\rightarrow$ El salón de los estudiantes.</li>
+                <li><strong>The dogs' park</strong> $\rightarrow$ El parque de los perros.</li>
             </ul>
         </div>
 
-        <button class="btn" style="background-color: var(--accent-color);" onclick="startGame()">¡Entendido! Comenzar los 20 Ejercicios</button>
+        <div class="rule-card">
+            <h4>C. Varios dueños - Plurales Irregulares (NO terminan en "S"):</h4>
+            <p>Si el plural cambia de palabra y NO termina en S, se aplica la regla normal: agregas <strong>'s</strong>.</p>
+            <ul>
+                <li><strong>The children's toys</strong> $\rightarrow$ Los juguetes de los niños (<em>children</em> es plural pero no lleva S).</li>
+                <li><strong>The women's group</strong> $\rightarrow$ El grupo de las mujeres.</li>
+            </ul>
+        </div>
+
+        <div class="rule-card">
+            <h4>D. Dos o más dueños nombrados juntos:</h4>
+            <p>Si el objeto es de dos personas al mismo tiempo, la <strong>'s</strong> va SOLO en el último nombre.</p>
+            <ul>
+                <li><strong>Ana and Carlos's bakery</strong> $\rightarrow$ La panadería de Ana y Carlos.</li>
+            </ul>
+        </div>
+
+        <button class="btn" style="background-color: var(--accent-color);" onclick="startGame()">¡Comenzar los 20 Ejercicios!</button>
     </div>
 
     <!-- PANTALLA 3: JUEGO -->
@@ -281,20 +302,20 @@
 
     <!-- PANTALLA 4: FIN DEL JUEGO -->
     <div id="end-screen" class="screen">
-        <h2>¡Has completado la lección!</h2>
+        <h2>¡Has terminado los ejercicios!</h2>
         <div class="explanation-box" style="text-align: center;">
-            <p>Tu puntaje obtenido es:</p>
+            <p>Tu puntuación final es:</p>
             <h1 id="final-score" style="font-size: 48px; color: var(--accent-color);">0 / 20</h1>
             <p id="final-message"></p>
         </div>
-        <button class="btn" onclick="restartGame()">Repetir los Ejercicios</button>
-        <button class="btn" style="background-color: var(--secondary-color);" onclick="showScreen('guide-screen')">Volver a Repasar la Teoría</button>
+        <button class="btn" onclick="restartGame()">Volver a Jugar</button>
+        <button class="btn" style="background-color: var(--secondary-color);" onclick="showScreen('guide-screen')">Volver a Leer la Teoría</button>
     </div>
 
 </div>
 
 <script>
-    // BASE DE DATOS DE 20 EJERCICIOS
+    // BASE DE DATOS DE 20 EJERCICIOS DIRIGIDOS
     const questions = [
         {
             question: "This is ____ (mi) book.",
@@ -308,7 +329,7 @@
             translation: "Traducción: Esta chaqueta es mía.",
             options: ["my", "mine", "I"],
             correct: 1,
-            explanation: "Usamos 'mine' porque va solo al final y no lleva el objeto después (Pronombre Posesivo)."
+            explanation: "Usamos 'mine' porque va al final y no lleva objeto después (Pronombre Posesivo)."
         },
         {
             question: "That is ____ (el perro de Carlos).",
@@ -322,7 +343,7 @@
             translation: "Traducción: ¿Dónde está tu casa?",
             options: ["yours", "your", "you"],
             correct: 1,
-            explanation: "'Your' es el adjetivo que acompaña directamente al sustantivo 'house'."
+            explanation: "'Your' es el adjetivo que acompaña directamente al objeto 'house'."
         },
         {
             question: "Is this coffee ____ (tuyo)?",
@@ -332,32 +353,32 @@
             explanation: "'Yours' reemplaza 'tu café' al final de la frase."
         },
         {
-            question: "____ (El teléfono de María) is on the table.",
-            translation: "Traducción: El teléfono de María está sobre la mesa.",
-            options: ["Maria's phone", "The phone of Maria", "Marias phone"],
+            question: "____ (La casa de mis padres) is very big.",
+            translation: "Traducción: La casa de mis padres es muy grande.",
+            options: ["My parents' house", "My parent's house", "The house of my parents"],
             correct: 0,
-            explanation: "Estructura correcta del Genitivo Sajón: Maria + 's + phone."
+            explanation: "Como 'parents' es un plural que ya termina en S, solo agregamos el apóstrofe al final: parents'."
         },
         {
             question: "We love ____ (nuestro) garden.",
             translation: "Traducción: Nos encanta nuestro jardín.",
             options: ["ours", "our", "us"],
             correct: 1,
-            explanation: "'Our' es el adjetivo posesivo para 'nuestro' ubicado antes del objeto."
+            explanation: "'Our' es el adjetivo posesivo para 'nuestro' antes del sustantivo 'garden'."
         },
         {
             question: "The blue car is ____ (nuestro).",
             translation: "Traducción: El carro azul es nuestro.",
             options: ["our", "ours", "we"],
             correct: 1,
-            explanation: "'Ours' es el pronombre posesivo ('nuestro') cuando va al final."
+            explanation: "'Ours' es el pronombre posesivo que va solo al final."
         },
         {
-            question: "____ (Las llaves de Juan) are on the counter.",
-            translation: "Traducción: Las llaves de Juan están en el mesón.",
-            options: ["Juan's keys", "The keys of Juan", "Juans keys"],
-            correct: 0,
-            explanation: "Usamos Juan + 's para expresar pertenencia."
+            question: "These are the ____ (juguetes de los niños).",
+            translation: "Traducción: Estos son los juguetes de los niños.",
+            options: ["childrens' toys", "children's toys", "childrens toys"],
+            correct: 1,
+            explanation: "'Children' es plural pero no termina en S, por lo tanto se le aplica 's normalmente (children's)."
         },
         {
             question: "She lost ____ (su - de ella) umbrella.",
@@ -374,11 +395,11 @@
             explanation: "'Hers' significa 'suya' cuando termina la oración."
         },
         {
-            question: "____ (La cocina de la abuela) is very clean.",
-            translation: "Traducción: La cocina de la abuela está muy limpia.",
-            options: ["Grandma's kitchen", "The kitchen of grandma", "Grandmas kitchen"],
+            question: "____ (El salón de los profesores) is clean.",
+            translation: "Traducción: El salón de los profesores está limpio.",
+            options: ["The teachers' room", "The teacher's room", "The teachers room"],
             correct: 0,
-            explanation: "Genitivo sajón: Grandma + 's + kitchen."
+            explanation: "'Teachers' indica plural de profesores. Como termina en S, solo se añade el apóstrofe al final (teachers')."
         },
         {
             question: "He is driving ____ (su - de él) new car.",
@@ -392,14 +413,14 @@
             translation: "Traducción: Este sombrero no es mío, es suyo (de él).",
             options: ["his", "him", "he"],
             correct: 0,
-            explanation: "'His' sirve tanto para acompañar al objeto como para la posición final."
+            explanation: "En inglés 'his' sirve tanto de adjetivo como de pronombre posesivo."
         },
         {
-            question: "____ (El gato de Ana) is sleeping.",
-            translation: "Traducción: El gato de Ana está durmiendo.",
-            options: ["Ana's cat", "The cat of Ana", "Anas cat"],
-            correct: 0,
-            explanation: "Ana + 's + cat es la forma correcta en inglés."
+            question: "This is ____ (la panadería de María y Juan).",
+            translation: "Traducción: Esta es la panadería de María y Juan.",
+            options: ["Maria's and Juan's bakery", "Maria and Juan's bakery", "Maria and Juans bakery"],
+            correct: 1,
+            explanation: "Cuando el objeto pertenece a dos personas juntas, la 's se le pone únicamente al último nombre."
         },
         {
             question: "They painted ____ (su - de ellos) house white.",
@@ -416,25 +437,25 @@
             explanation: "'Theirs' significa 'suya / de ellos' sin repetir la palabra casa."
         },
         {
-            question: "____ (El doctor de Pedro) is very active.",
-            translation: "Traducción: El doctor de Pedro es muy activo.",
-            options: ["Pedro's doctor", "The doctor of Pedro", "Pedros doctor"],
-            correct: 0,
-            explanation: "Genitivo sajón: Pedro + 's + doctor."
-        },
-        {
             question: "Look at the dog, ____ (su - del perro) tail is moving.",
             translation: "Traducción: Mira al perro, su cola se está moviendo.",
             options: ["its", "it's", "it"],
             correct: 0,
-            explanation: "'Its' (sin apóstrofe) es el adjetivo posesivo para objetos o animales."
+            explanation: "'Its' (sin apóstrofe) es el adjetivo posesivo para animales u objetos."
+        },
+        {
+            question: "____ (Las comida de los gatos) is ready.",
+            translation: "Traducción: La comida de los gatos está lista.",
+            options: ["The cats' food", "The cat's food", "The cats food"],
+            correct: 0,
+            explanation: "'Cats' es plural (varios gatos), así que solo agregamos el apóstrofe al final (cats')."
         },
         {
             question: "____ (El jardín de mi madre) has beautiful flowers.",
             translation: "Traducción: El jardín de mi madre tiene flores hermosas.",
             options: ["My mother's garden", "The garden of my mother", "My mothers garden"],
             correct: 0,
-            explanation: "My mother + 's + garden."
+            explanation: "My mother (un solo dueño) + 's + garden."
         }
     ];
 
@@ -514,11 +535,11 @@
 
         const messageEl = document.getElementById('final-message');
         if (score === 20) {
-            messageEl.innerText = "¡Excelente! Has comprendido y dominado perfectamente las reglas de los posesivos en inglés.";
+            messageEl.innerText = "¡Puntaje perfecto! Has aprendido a diferenciar los posesivos y el genitivo sajón sin errores.";
         } else if (score >= 14) {
-            messageEl.innerText = "¡Buen trabajo! Tienes claros casi todos los conceptos. Revisa los errores cometidos para perfeccionar.";
+            messageEl.innerText = "¡Muy buen trabajo! Tienes claros casi todos los conceptos. Revisa las explicaciones de los errores cometidos.";
         } else {
-            messageEl.innerText = "Buen intento. Te sugerimos revisar con calma la tabla teórica y volver a realizar el test.";
+            messageEl.innerText = "Buen intento. Te recomendamos repasar la teoría detallada y realizar el test una vez más.";
         }
     }
 
