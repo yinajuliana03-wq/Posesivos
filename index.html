@@ -3,45 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Grammar Adventure - Posesivos y Genitivo Sajón</title>
+    <title>Dominando los Posesivos en Inglés</title>
     <style>
         :root {
-            --bg-color: #f0f4f8;
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #2f855a;
+            --bg-color: #f7fafc;
             --card-bg: #ffffff;
-            --primary: #1e3a8a;
-            --primary-light: #3b82f6;
-            --secondary: #0d9488;
-            --accent: #f59e0b;
-            --text-main: #1f2937;
-            --correct-bg: #dcfce7;
-            --correct-text: #166534;
-            --incorrect-bg: #fee2e2;
-            --incorrect-text: #991b1b;
+            --text-color: #2d3748;
+            --correct-color: #276749;
+            --incorrect-color: #9b2c2c;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-color);
             margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
+            padding: 20px;
+            font-size: 18px; /* Tamaño legible para adultos mayores */
+            line-height: 1.6;
         }
 
-        .game-container {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            max-width: 750px;
-            width: 100%;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
             padding: 30px;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            text-align: center;
         }
 
         .screen {
@@ -52,601 +48,405 @@
             display: block;
         }
 
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--primary-light);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+        .explanation-box {
+            background-color: #ebf8ff;
+            border-left: 6px solid var(--secondary-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
         }
 
-        h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin: 0 0 8px 0;
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #4b5563;
-            margin: 0;
+        .grammar-table th, .grammar-table td {
+            border: 1px solid #cbd5e0;
+            padding: 12px;
+            text-align: left;
         }
 
-        /* Guía Interactiva / Tutorial */
-        .tutorial-card {
-            background-color: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-            border-left: 6px solid var(--primary-light);
-        }
-
-        .tutorial-card h3 {
-            margin-top: 0;
-            color: var(--primary);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tutorial-card p {
-            margin: 6px 0;
-            line-height: 1.5;
-            font-size: 1.05rem;
-        }
-
-        .example-box {
-            background-color: #ffffff;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px dashed #cbd5e1;
-            margin-top: 8px;
-            font-size: 1rem;
-        }
-
-        .btn-start, .btn-action {
-            background-color: var(--primary-light);
+        .grammar-table th {
+            background-color: var(--primary-color);
             color: white;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: var(--secondary-color);
             border: none;
-            border-radius: 12px;
-            padding: 16px 32px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
-            width: 100%;
-            transition: background-color 0.2s, transform 0.1s;
-            margin-top: 15px;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+            transition: background 0.2s;
         }
 
-        .btn-start:hover, .btn-action:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Área de Juego */
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e2e8f0;
-            border-radius: 10px;
-            height: 14px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--secondary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .rule-tag {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .q-counter {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #64748b;
-        }
-
-        .card {
-            background-color: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 25px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .sentence-en {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .sentence-es {
-            font-size: 1.15rem;
-            color: #475569;
-            font-style: italic;
-            margin-bottom: 0;
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 500px) {
-            .options-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .btn:hover {
+            background-color: var(--primary-color);
         }
 
         .btn-option {
-            background-color: #f8fafc;
-            border: 2px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 16px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: var(--text-main);
+            background-color: #edf2f7;
+            color: var(--text-color);
+            border: 2px solid #cbd5e0;
+            text-align: left;
         }
 
         .btn-option:hover {
             background-color: #e2e8f0;
-            border-color: #94a3b8;
         }
 
-        .explanation-panel {
-            display: none;
-            padding: 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            font-size: 1.05rem;
-        }
-
-        .explanation-panel.correct {
-            background-color: var(--correct-bg);
-            color: var(--correct-text);
-            border: 1px solid #86efac;
-        }
-
-        .explanation-panel.incorrect {
-            background-color: var(--incorrect-bg);
-            color: var(--incorrect-text);
-            border: 1px solid #fca5a5;
-        }
-
-        .explanation-panel h4 {
-            margin: 0 0 8px 0;
-            font-size: 1.15rem;
-        }
-
-        .score-display {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .footer-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn-next {
-            background-color: var(--primary);
-            color: white;
-            border: none;
+        .progress-bar {
+            width: 100%;
+            background-color: #e2e8f0;
+            height: 20px;
             border-radius: 10px;
-            padding: 12px 24px;
-            font-size: 1.1rem;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
             font-weight: bold;
-            cursor: pointer;
-            display: none;
         }
 
-        /* Pantalla Final */
-        .results-box {
-            text-align: center;
-            padding: 20px 0;
+        .feedback.correct {
+            background-color: #c6f6d5;
+            color: var(--correct-color);
         }
 
-        .trophy-icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
+        .feedback.incorrect {
+            background-color: #fed7d7;
+            color: var(--incorrect-color);
         }
 
-        .final-score {
-            font-size: 2.2rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin: 15px 0;
-        }
-
-        .final-message {
-            font-size: 1.2rem;
-            color: #334155;
-            line-height: 1.5;
-            margin-bottom: 25px;
+        .translation {
+            font-style: italic;
+            color: #4a5568;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-<div class="game-container">
-    
-    <!-- PANTALLA 1: INICIO Y LECCIÓN -->
-    <div id="screen-start" class="screen active">
-        <header>
-            <h1>English Grammar Master</h1>
-            <p class="subtitle">Aprende a expresar posesión en inglés de forma clara y sencilla</p>
-        </header>
+<div class="container">
 
-        <p style="font-size: 1.1rem; text-align: center; color: #475569; margin-bottom: 20px;">
-            Lee detenidamente esta guía explicativa antes de empezar el juego. Contiene las 3 claves esenciales:
-        </p>
-
-        <div class="tutorial-card">
-            <h3>1. Possessive Adjectives (Adjetivos Posesivos)</h3>
-            <p><strong>Regla de oro:</strong> Van <u>SIEMPRE acompañando</u> al objeto (van pegados antes del sustantivo).</p>
-            <p><em>Palabras:</em> My (mi), Your (tu), His (de él), Her (de ella), Our (nuestro), Their (de ellos).</p>
-            <div class="example-box">
-                🇬🇧 <strong>My</strong> car is big. / 🇪🇸 <strong>Mi</strong> carro es grande. <br>
-                <small>(Acompaña a 'car')</small>
-            </div>
+    <!-- PANTALLA 1: INICIO -->
+    <div id="start-screen" class="screen active">
+        <h1>Aprende Posesivos en Inglés</h1>
+        <p>Bienvenido/a. En esta lección interactiva aprenderás a expresar posesión en inglés de manera sencilla, clara y con ejemplos de la vida cotidiana.</p>
+        
+        <div class="explanation-box">
+            <h3>¿Qué aprenderás hoy?</h3>
+            <ul>
+                <li><strong>Adjetivos Posesivos:</strong> Van <em>antes</em> del objeto (ej. <em>mi</em> casa).</li>
+                <li><strong>Pronombres Posesivos:</strong> Reemplazan al objeto para no repetirlo (ej. La casa es <em>mía</em>).</li>
+                <li><strong>Genitivo Sajón ('s):</strong> Indica que algo pertenece a una persona específica (ej. La casa <em>de María</em> $\rightarrow$ <em>Maria's</em> house).</li>
+            </ul>
         </div>
 
-        <div class="tutorial-card">
-            <h3>2. Possessive Pronouns (Pronombres Posesivos)</h3>
-            <p><strong>Regla de oro:</strong> Van <u>SOLOS</u>, habitualmente al final de la frase. <u>Reemplazan</u> al objeto para no repetirlo.</p>
-            <p><em>Palabras:</em> Mine (mío/a), Yours (tuyo/a), His (suyo de él), Hers (suyo de ella), Ours (nuestro), Theirs (suyo de ellos).</p>
-            <div class="example-box">
-                🇬🇧 The car is <strong>mine</strong>. / 🇪🇸 El carro es <strong>mío</strong>. <br>
-                <small>(Va solo al final, no lleva 'car' después)</small>
-            </div>
-        </div>
-
-        <div class="tutorial-card">
-            <h3>3. Saxon Genitive (Genitivo Sajón: 's)</h3>
-            <p><strong>Regla de oro:</strong> Sirve para nombrar al <u>DUEÑO directo</u> de algo. Se le añade un apóstrofe con 's (<strong>'s</strong>) a la persona o dueño.</p>
-            <div class="example-box">
-                🇬🇧 <strong>Maria's</strong> dog. / 🇪🇸 El perro <strong>de María</strong>. <br>
-                <small>(Estructura: [Dueño] + 's + [Objeto])</small>
-            </div>
-        </div>
-
-        <button class="btn-start" onclick="startGame()">¡Entendido! Comenzar la práctica (20 Ejercicios) ➔</button>
+        <button class="btn" onclick="showScreen('guide-screen')">Ver Explicación Completa</button>
+        <button class="btn" style="background-color: var(--accent-color);" onclick="startGame()">Ir Directo al Juego</button>
     </div>
 
-    <!-- PANTALLA 2: JUEGO / PRÁCTICA -->
-    <div id="screen-game" class="screen">
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
+    <!-- PANTALLA 2: GUÍA TEÓRICA -->
+    <div id="guide-screen" class="screen">
+        <h2>Reglas Clave con Ejemplos Cotidianos</h2>
+
+        <table class="grammar-table">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Uso</th>
+                    <th>Ejemplo en Inglés</th>
+                    <th>Traducción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Adjetivo Posesivo</strong></td>
+                    <td>Acompaña al sustantivo.</td>
+                    <td>This is <strong>my</strong> car.</td>
+                    <td>Este es <strong>mi</strong> carro.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pronombre Posesivo</strong></td>
+                    <td>Va solo, al final o sin sustantivo.</td>
+                    <td>This car is <strong>mine</strong>.</td>
+                    <td>Este carro es <strong>mío</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Genitivo Sajón ('s)</strong></td>
+                    <td>Nombre + <strong>'s</strong> + objeto.</td>
+                    <td>It is <strong>Pedro's</strong> hat.</td>
+                    <td>Es el sombrero <strong>de Pedro</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="explanation-box">
+            <strong>Regla de oro para el Genitivo Sajón ('s):</strong><br>
+            En español decimos "El perro de Ana". En inglés se le da la vuelta: "Ana" va primero, le agregamos <strong>'s</strong> y luego "perro": <em>Ana's dog</em>.
         </div>
 
-        <div class="question-header">
-            <span class="rule-tag" id="rule-type">Categoría</span>
-            <span class="q-counter">Pregunta <span id="q-current">1</span> de 20</span>
-        </div>
-
-        <div class="card">
-            <div class="sentence-en" id="sentence-en">Loading...</div>
-            <div class="sentence-es" id="sentence-es">Cargando...</div>
-        </div>
-
-        <div class="options-grid" id="options-container"></div>
-
-        <div class="explanation-panel" id="explanation-panel">
-            <h4 id="explanation-title">Explicación</h4>
-            <p id="explanation-en" style="font-weight: bold; margin-bottom: 4px;"></p>
-            <p id="explanation-es" style="margin-top: 0; font-style: italic;"></p>
-        </div>
-
-        <div class="footer-controls">
-            <div class="score-display">Aciertos: <span id="score">0</span> / 20</div>
-            <button class="btn-next" id="btn-next" onclick="nextQuestion()">Siguiente Pregunta ➔</button>
-        </div>
+        <button class="btn" onclick="startGame()">¡Comenzar el Juego!</button>
     </div>
 
-    <!-- PANTALLA 3: RESULTADOS / FINAL -->
-    <div id="screen-end" class="screen">
-        <div class="results-box">
-            <div class="trophy-icon" id="trophy-icon">🏆</div>
-            <h2>¡Felicitaciones por completar el juego!</h2>
-            <p style="font-size: 1.1rem; color: #64748b;">Has finalizado los 20 ejercicios de práctica.</p>
-            
-            <div class="final-score">Puntuación: <span id="final-score-val">0</span> / 20</div>
-            <div class="final-message" id="final-message">Mensaje final...</div>
-
-            <button class="btn-action" onclick="restartGame()">🔄 Repasar y Jugar de Nuevo</button>
+    <!-- PANTALLA 3: JUEGO -->
+    <div id="game-screen" class="screen">
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
         </div>
+        <p style="text-align: right; font-weight: bold;" id="question-counter">Ejercicio 1 de 20</p>
+
+        <div id="question-container">
+            <h3 id="question-text">Cargando pregunta...</h3>
+            <p class="translation" id="question-translation"></p>
+            <div id="options-container"></div>
+        </div>
+
+        <div id="feedback-container" class="feedback" style="display: none;"></div>
+        <button id="next-btn" class="btn" style="display: none;" onclick="nextQuestion()">Siguiente Pregunta</button>
+    </div>
+
+    <!-- PANTALLA 4: FIN DEL JUEGO -->
+    <div id="end-screen" class="screen">
+        <h2>¡Felicitaciones! Has terminado.</h2>
+        <div class="explanation-box" style="text-align: center;">
+            <p>Tu puntuación final es:</p>
+            <h1 id="final-score" style="font-size: 48px; color: var(--accent-color);">0 / 20</h1>
+            <p id="final-message"></p>
+        </div>
+        <button class="btn" onclick="restartGame()">Volver a Jugar</button>
+        <button class="btn" style="background-color: var(--secondary-color);" onclick="showScreen('guide-screen')">Repasar la Teoría</button>
     </div>
 
 </div>
 
 <script>
+    // BASE DE DATOS DE 20 EJERCICIOS
     const questions = [
         {
-            type: "Possessive Adjective",
-            sentenceEn: "This is _____ house.",
-            sentenceEs: "Esta es mi casa.",
-            options: ["my", "mine", "me", "I"],
+            question: "This is ____ (mi) book.",
+            translation: "Traducción: Este es mi libro.",
+            options: ["my", "mine", "me"],
             correct: 0,
-            explanationEn: "Use 'my' because it stands right before the noun 'house'.",
-            explanationEs: "Usa 'my' porque va directamente acompañando al sustantivo 'house' (mi casa)."
+            explanation: "Usamos 'my' porque acompaña directamente al objeto 'book' (Adjetivo Posesivo)."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "This house is _____.",
-            sentenceEs: "Esta casa es mía.",
-            options: ["my", "mine", "me", "myself"],
+            question: "This jacket is ____ (mía).",
+            translation: "Traducción: Esta chaqueta es mía.",
+            options: ["my", "mine", "I"],
             correct: 1,
-            explanationEn: "Use 'mine' because it stands alone at the end, replacing 'my house'.",
-            explanationEs: "Usa 'mine' porque va solo al final de la oración y reemplaza la expresión 'mi casa'."
+            explanation: "Usamos 'mine' porque va al final y no lleva el objeto después (Pronombre Posesivo)."
         },
         {
-            type: "Saxon Genitive",
-            sentenceEn: "This is _____ dog.",
-            sentenceEs: "Este es el perro de Ana.",
-            options: ["Ana", "of Ana", "Ana's", "Anas"],
-            correct: 2,
-            explanationEn: "Add 's to the person (Ana's) to show ownership directly.",
-            explanationEs: "Añade 's al nombre de la persona (Ana's) para indicar que es la dueña del perro."
-        },
-        {
-            type: "Possessive Adjective",
-            sentenceEn: "Where is _____ jacket?",
-            sentenceEs: "¿Dónde está tu chaqueta?",
-            options: ["yours", "your", "you", "she"],
+            question: "That is ____ (el perro de Carlos).",
+            translation: "Traducción: Ese es el perro de Carlos.",
+            options: ["the dog of Carlos", "Carlos's dog", "Carlos dog"],
             correct: 1,
-            explanationEn: "Use 'your' because it accompanies the noun 'jacket'.",
-            explanationEs: "Usa 'your' porque está acompañando al objeto 'jacket' (tu chaqueta)."
+            explanation: "Para indicar posesión de una persona usaremos el Genitivo Sajón: Nombre + 's + objeto."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "The red car is _____.",
-            sentenceEs: "El carro rojo es suyo (de él).",
-            options: ["his", "he", "him", "his's"],
+            question: "Where is ____ (tu) house?",
+            translation: "Traducción: ¿Dónde está tu casa?",
+            options: ["yours", "your", "you"],
+            correct: 1,
+            explanation: "'Your' es el adjetivo que acompaña al sustantivo 'house'."
+        },
+        {
+            question: "Is this coffee ____ (tuyo)?",
+            translation: "Traducción: ¿Este café es tuyo?",
+            options: ["your", "yours", "you"],
+            correct: 1,
+            explanation: "'Yours' reemplaza 'tu café' al final de la oración."
+        },
+        {
+            question: "____ (El teléfono de María) is on the table.",
+            translation: "Traducción: El teléfono de María está sobre la mesa.",
+            options: ["Maria's phone", "The phone of Maria", "Marias phone"],
             correct: 0,
-            explanationEn: "Use 'his' as a pronoun to mean 'his car' when standing alone.",
-            explanationEs: "Usa 'his' como pronombre cuando va solo para indicar 'el carro de él'."
+            explanation: "Estructura correcta del Genitivo Sajón: Maria + 's + phone."
         },
         {
-            type: "Saxon Genitive",
-            sentenceEn: "Where is the _____ room?",
-            sentenceEs: "¿Dónde está la habitación del bebé?",
-            options: ["baby", "baby's", "babys", "of baby"],
+            question: "We love ____ (nuestro) garden.",
+            translation: "Traducción: Nos encanta nuestro jardín.",
+            options: ["ours", "our", "us"],
             correct: 1,
-            explanationEn: "Attach 's to 'baby' to express ownership of the room.",
-            explanationEs: "Añade 's a 'baby' (baby's) para indicar que la habitación es del bebé."
+            explanation: "'Our' es el adjetivo posesivo para 'nuestro' antes de un objeto."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "Is this coffee _____?",
-            sentenceEs: "¿Este café es tuyo?",
-            options: ["your", "you", "yours", "yours's"],
-            correct: 2,
-            explanationEn: "Use 'yours' because there is no noun after the blank.",
-            explanationEs: "Usa 'yours' porque no hay ningún objeto escrito después de la casilla."
-        },
-        {
-            type: "Possessive Adjective",
-            sentenceEn: "_____ mother is a doctor.",
-            sentenceEs: "Nuestra madre es médica.",
-            options: ["Ours", "Our", "Us", "We"],
+            question: "The blue car is ____ (nuestro).",
+            translation: "Traducción: El carro azul es nuestro.",
+            options: ["our", "ours", "we"],
             correct: 1,
-            explanationEn: "Use 'Our' because it immediately precedes the noun 'mother'.",
-            explanationEs: "Usa 'Our' porque va justo antes del sustantivo 'mother' (nuestra madre)."
+            explanation: "'Ours' es el pronombre posesivo ('nuestro') cuando no sigue el objeto."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "That blue umbrella is _____.",
-            sentenceEs: "Ese paraguas azul es nuestro.",
-            options: ["our", "ours", "we", "us"],
-            correct: 1,
-            explanationEn: "Use 'ours' because it comes at the end without a noun following.",
-            explanationEs: "Usa 'ours' porque va al final de la frase y reemplaza a 'nuestro paraguas'."
-        },
-        {
-            type: "Saxon Genitive",
-            sentenceEn: "I love _____ cooking.",
-            sentenceEs: "Me encanta la cocina de mi abuela.",
-            options: ["my grandmother", "my grandmother's", "my grandmothers", "of my grandmother"],
-            correct: 1,
-            explanationEn: "Add 's to 'my grandmother' to show who the cooking belongs to.",
-            explanationEs: "Añade 's a 'my grandmother' para indicar que la sazón pertenece a la abuela."
-        },
-        {
-            type: "Possessive Adjective",
-            sentenceEn: "The cat is eating _____ food.",
-            sentenceEs: "El gato está comiendo su comida (de él/animal).",
-            options: ["its", "it's", "it", "its'"],
+            question: "____ (Las llaves de Juan) are on the counter.",
+            translation: "Traducción: Las llaves de Juan están en el mesón.",
+            options: ["Juan's keys", "The keys of Juan", "Juans keys"],
             correct: 0,
-            explanationEn: "Use 'its' (without apostrophe) as the possessive adjective for animals/objects.",
-            explanationEs: "Usa 'its' (sin apóstrofe) como adjetivo posesivo para animales o cosas."
+            explanation: "Usamos Juan + 's para decir 'de Juan'."
         },
         {
-            type: "Saxon Genitive",
-            sentenceEn: "These are _____ books.",
-            sentenceEs: "Estos son los libros de Peter.",
-            options: ["Peter", "Peter's", "Peters", "of Peter"],
-            correct: 1,
-            explanationEn: "Use 'Peter's' to link the owner with his objects.",
-            explanationEs: "Usa 'Peter's' para unir directamente al dueño con sus libros."
-        },
-        {
-            type: "Possessive Adjective",
-            sentenceEn: "They forgot _____ keys.",
-            sentenceEs: "Ellos olvidaron sus llaves.",
-            options: ["their", "theirs", "them", "they"],
+            question: "She lost ____ (su - de ella) umbrella.",
+            translation: "Traducción: Ella perdió su sombrilla.",
+            options: ["her", "hers", "she"],
             correct: 0,
-            explanationEn: "Use 'their' because it accompanies the noun 'keys'.",
-            explanationEs: "Usa 'their' porque acompaña directamente a las llaves ('keys')."
+            explanation: "'Her' significa 'su' (de ella) acompañando a 'umbrella'."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "The decision was _____.",
-            sentenceEs: "La decisión fue de ellos (suya).",
-            options: ["their", "theirs", "them", "they"],
+            question: "That umbrella is ____ (suya - de ella).",
+            translation: "Traducción: Esa sombrilla es suya (de ella).",
+            options: ["her", "hers", "she"],
             correct: 1,
-            explanationEn: "Use 'theirs' because it functions as a stand-alone pronoun.",
-            explanationEs: "Usa 'theirs' porque funciona solo al final como pronombre."
+            explanation: "'Hers' es 'suya' cuando la oración termina ahí."
         },
         {
-            type: "Possessive Adjective",
-            sentenceEn: "She clean _____ room every day.",
-            sentenceEs: "Ella limpia su habitación todos los días.",
-            options: ["her", "hers", "she", "him"],
+            question: "____ (La cocina de la abuela) is very clean.",
+            translation: "Traducción: La cocina de la abuela está muy limpia.",
+            options: ["Grandma's kitchen", "The kitchen of grandma", "Grandmas kitchen"],
             correct: 0,
-            explanationEn: "Use 'her' because it directly modifies the noun 'room'.",
-            explanationEs: "Usa 'her' porque acompaña directamente al sustantivo 'room' (su habitación)."
+            explanation: "Genitivo sajón: Grandma + 's + kitchen."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "This bag is not mine, it is _____.",
-            sentenceEs: "Este bolso no es mío, es de ella (suyo).",
-            options: ["her", "hers", "she", "herself"],
-            correct: 1,
-            explanationEn: "Use 'hers' to mean 'her bag' without repeating the word 'bag'.",
-            explanationEs: "Usa 'hers' para decir 'el de ella' sin repetir la palabra bolso."
-        },
-        {
-            type: "Saxon Genitive",
-            sentenceEn: "What is your _____ name?",
-            sentenceEs: "¿Cuál es el nombre de tu hermana?",
-            options: ["sister", "sister's", "sisters", "of sister"],
-            correct: 1,
-            explanationEn: "Add 's to 'sister' to show possession of the name.",
-            explanationEs: "Agrega 's a 'sister' (sister's) para vincular la posesión del nombre."
-        },
-        {
-            type: "Possessive Adjective",
-            sentenceEn: "_____ garden is full of beautiful flowers.",
-            sentenceEs: "Su jardín (de ellos) está lleno de hermosas flores.",
-            options: ["Their", "Theirs", "They", "Them"],
+            question: "He is driving ____ (su - de él) new car.",
+            translation: "Traducción: Él está manejando su carro nuevo.",
+            options: ["his", "him", "he"],
             correct: 0,
-            explanationEn: "Use 'Their' because it precedes 'garden'.",
-            explanationEs: "Usa 'Their' porque va justo antes de la palabra jardín ('garden')."
+            explanation: "'His' es el adjetivo posesivo para 'su' (de él)."
         },
         {
-            type: "Saxon Genitive",
-            sentenceEn: "The _____ bicycle is brand new.",
-            sentenceEs: "La bicicleta de Carlos es totalmente nueva.",
-            options: ["Carlos", "Carlos's", "of Carlos", "Carlos'"],
-            correct: 1,
-            explanationEn: "Add 's (Carlos's) or ' to show ownership for names ending in S.",
-            explanationEs: "Agrega 's al nombre Carlos (Carlos's) para indicar que la bicicleta le pertenece."
+            question: "This hat isn't mine, it's ____ (suyo - de él).",
+            translation: "Traducción: Este sombrero no es mío, es suyo (de él).",
+            options: ["his", "him", "he"],
+            correct: 0,
+            explanation: "En inglés, 'his' funciona tanto como adjetivo como pronombre posesivo."
         },
         {
-            type: "Possessive Pronoun",
-            sentenceEn: "You have your opinion and I have _____.",
-            sentenceEs: "Tú tienes tu opinión y yo tengo la mía.",
-            options: ["my", "mine", "me", "myself"],
+            question: "____ (El gato de Ana) is sleeping.",
+            translation: "Traducción: El gato de Ana está durmiendo.",
+            options: ["Ana's cat", "The cat of Ana", "Anas cat"],
+            correct: 0,
+            explanation: "Ana + 's + cat expresa pertenencia correctamente."
+        },
+        {
+            question: "They painted ____ (su - de ellos) house white.",
+            translation: "Traducción: Ellos pintaron su casa de blanco.",
+            options: ["their", "theirs", "them"],
+            correct: 0,
+            explanation: "'Their' es el adjetivo posesivo para 'su' (de ellos)."
+        },
+        {
+            question: "That house on the corner is ____ (suya - de ellos).",
+            translation: "Traducción: Esa casa en la esquina es suya (de ellos).",
+            options: ["their", "theirs", "they"],
             correct: 1,
-            explanationEn: "Use 'mine' to conclude the thought without repeating 'opinion'.",
-            explanationEs: "Usa 'mine' para finalizar la idea sin necesidad de repetir la palabra opinión."
+            explanation: "'Theirs' significa 'suya / de ellos' sin mencionar la palabra casa después."
+        },
+        {
+            question: "____ (El doctor de Pedro) is very active.",
+            translation: "Traducción: El doctor de Pedro es muy activo.",
+            options: ["Pedro's doctor", "The doctor of Pedro", "Pedros doctor"],
+            correct: 0,
+            explanation: "Genitivo sajón: Pedro + 's + doctor."
+        },
+        {
+            question: "Look at the dog, ____ (su - del perro) tail is moving.",
+            translation: "Traducción: Mira al perro, su cola se está moviendo.",
+            options: ["its", "it's", "it"],
+            correct: 0,
+            explanation: "'Its' (sin apóstrofe) es el adjetivo posesivo para cosas o animales."
+        },
+        {
+            question: "____ (El jardín de mi madre) has beautiful flowers.",
+            translation: "Traducción: El jardín de mi madre tiene flores hermosas.",
+            options: ["My mother's garden", "The garden of my mother", "My mothers garden"],
+            correct: 0,
+            explanation: "My mother + 's + garden."
         }
     ];
 
     let currentQuestionIndex = 0;
     let score = 0;
-    let answered = false;
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+    }
 
     function startGame() {
-        document.getElementById("screen-start").classList.remove("active");
-        document.getElementById("screen-game").classList.add("active");
         currentQuestionIndex = 0;
         score = 0;
+        showScreen('game-screen');
         loadQuestion();
     }
 
     function loadQuestion() {
-        answered = false;
         const q = questions[currentQuestionIndex];
+        
+        // Actualizar progreso
+        document.getElementById('question-counter').innerText = `Ejercicio ${currentQuestionIndex + 1} de ${questions.length}`;
+        const progressPercent = ((currentQuestionIndex) / questions.length) * 100;
+        document.getElementById('progress-fill').style.width = `${progressPercent}%`;
 
-        // Actualizar interfaz
-        document.getElementById("q-current").innerText = currentQuestionIndex + 1;
-        document.getElementById("rule-type").innerText = q.type;
-        document.getElementById("sentence-en").innerText = q.sentenceEn;
-        document.getElementById("sentence-es").innerText = q.sentenceEs;
-        document.getElementById("score").innerText = score;
+        // Ocultar feedback anterior
+        document.getElementById('feedback-container').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
 
-        // Barra de progreso
-        const progressPct = ((currentQuestionIndex) / questions.length) * 100;
-        document.getElementById("progress-bar").style.width = progressPct + "%";
+        // Cargar texto
+        document.getElementById('question-text').innerText = q.question;
+        document.getElementById('question-translation').innerText = q.translation;
 
-        // Cargar Opciones
-        const optionsContainer = document.getElementById("options-container");
-        optionsContainer.innerHTML = "";
+        // Cargar opciones
+        const optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
 
-        q.options.forEach((opt, index) => {
-            const btn = document.createElement("button");
-            btn.className = "btn-option";
-            btn.innerText = opt;
+        q.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-option';
+            btn.innerText = `${index + 1}. ${option}`;
             btn.onclick = () => selectOption(index);
             optionsContainer.appendChild(btn);
         });
-
-        // Ocultar explicaciones y botón
-        document.getElementById("explanation-panel").style.display = "none";
-        document.getElementById("btn-next").style.display = "none";
     }
 
-    function selectOption(index) {
-        if (answered) return;
-        answered = true;
-
+    function selectOption(selectedIndex) {
         const q = questions[currentQuestionIndex];
-        const panel = document.getElementById("explanation-panel");
-        const titleEl = document.getElementById("explanation-title");
-        const enEl = document.getElementById("explanation-en");
-        const esEl = document.getElementById("explanation-es");
-        const buttons = document.querySelectorAll(".btn-option");
+        const feedbackContainer = document.getElementById('feedback-container');
+        const optionButtons = document.querySelectorAll('.btn-option');
 
-        if (index === q.correct) {
+        // Deshabilitar botones de opción tras responder
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (selectedIndex === q.correct) {
             score++;
-            document.getElementById("score").innerText = score;
-            panel.className = "explanation-panel correct";
-            titleEl.innerText = "¡Excelente! / Correct!";
-            buttons[index].style.backgroundColor = "#bbf7d0";
-            buttons[index].style.borderColor = "#22c55e";
+            feedbackContainer.className = 'feedback correct';
+            feedbackContainer.innerHTML = `¡Correcto! ${q.explanation}`;
         } else {
-            panel.className = "explanation-panel incorrect";
-            titleEl.innerText = "¡Atención! / Incorrect";
-            buttons[index].style.backgroundColor = "#fecaca";
-            buttons[index].style.borderColor = "#ef4444";
-            buttons[q.correct].style.backgroundColor = "#bbf7d0";
-            buttons[q.correct].style.borderColor = "#22c55e";
+            feedbackContainer.className = 'feedback incorrect';
+            feedbackContainer.innerHTML = `Incorrecto. La respuesta correcta era: <strong>${q.options[q.correct]}</strong>.<br>${q.explanation}`;
         }
 
-        enEl.innerText = q.explanationEn;
-        esEl.innerText = q.explanationEs;
-        panel.style.display = "block";
-        document.getElementById("btn-next").style.display = "block";
+        feedbackContainer.style.display = 'block';
+        document.getElementById('next-btn').style.display = 'block';
     }
 
     function nextQuestion() {
@@ -654,36 +454,27 @@
         if (currentQuestionIndex < questions.length) {
             loadQuestion();
         } else {
-            showEndScreen();
+            endGame();
         }
     }
 
-    function showEndScreen() {
-        document.getElementById("screen-game").classList.remove("active");
-        document.getElementById("screen-end").classList.add("active");
+    function endGame() {
+        document.getElementById('progress-fill').style.width = '100%';
+        showScreen('end-screen');
+        document.getElementById('final-score').innerText = `${score} / ${questions.length}`;
 
-        document.getElementById("final-score-val").innerText = score;
-        const msgEl = document.getElementById("final-message");
-        const trophyEl = document.getElementById("trophy-icon");
-
+        const messageEl = document.getElementById('final-message');
         if (score === 20) {
-            trophyEl.innerText = "🏆🌟";
-            msgEl.innerHTML = "<strong>¡Puntuación Perfecta!</strong><br>Has demostrado un dominio total de los adjetivos, pronombres posesivos y el genitivo sajón.";
-        } else if (score >= 15) {
-            trophyEl.innerText = "🥇";
-            msgEl.innerHTML = "<strong>¡Excelente Trabajo!</strong><br>Comprendes muy bien las diferencias gramaticales. ¡Sigue practicando para perfeccionar!";
-        } else if (score >= 10) {
-            trophyEl.innerText = "🥈";
-            msgEl.innerHTML = "<strong>¡Buen intento!</strong><br>Vas por buen camino. Te sugerimos repasar la guía explicativa del inicio para reforzar los puntos difíciles.";
+            messageEl.innerText = "¡Excelente trabajo! Has dominado por completo los posesivos en inglés.";
+        } else if (score >= 14) {
+            messageEl.innerText = "¡Muy buen esfuerzo! Entiendes casi todo el tema. Un poco más de práctica y será perfecto.";
         } else {
-            trophyEl.innerText = "📚";
-            msgEl.innerHTML = "<strong>¡No te te desanimes!</strong><br>La gramática requiere práctica y constancia. Te recomendamos volver a jugar repasando con atención las explicaciones.";
+            messageEl.innerText = "Buen intento. Te recomendamos repasar la teoría y volver a realizar los ejercicios.";
         }
     }
 
     function restartGame() {
-        document.getElementById("screen-end").classList.remove("active");
-        document.getElementById("screen-start").classList.add("active");
+        startGame();
     }
 </script>
 
